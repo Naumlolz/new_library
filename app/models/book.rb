@@ -20,4 +20,9 @@
 #  fk_rails_...  (genre_id => genres.id)
 #
 class Book < ApplicationRecord
+  validates :title, :author_id, :genre_id, presence: true
+
+  belongs_to :author
+  has_many :genres_books
+  has_many :genres, through: :genres_books
 end

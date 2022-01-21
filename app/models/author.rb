@@ -9,4 +9,8 @@
 #  updated_at :datetime         not null
 #
 class Author < ApplicationRecord
+  validates :first_name, :last_name, presence: true
+
+  has_many :authors_books
+  has_many :books, through: :authors_books
 end

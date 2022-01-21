@@ -19,4 +19,10 @@
 #  fk_rails_...  (book_id => books.id)
 #
 class AuthorsBook < ApplicationRecord
+  validates :author_id, :book_id, presence: true
+
+  belongs_to :author
+  belongs_to :book
+
+  validates :book_id, :uniqueness => {:scope => :author_id}
 end
