@@ -22,7 +22,7 @@
 class Book < ApplicationRecord
   validates :title, :author_id, :genre_id, presence: true
 
-  belongs_to :author
-  has_many :genres_books
-  has_many :genres, through: :genres_books
+  has_many :authors_books
+  has_many :authors, through: :authors_books
+  belongs_to :genre
 end

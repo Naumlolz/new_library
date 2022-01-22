@@ -10,6 +10,5 @@
 class Genre < ApplicationRecord
   validates :name, presence: true
 
-  has_many :genres_books
-  has_many :books, through: :genres_books
+  has_many :books
 end
