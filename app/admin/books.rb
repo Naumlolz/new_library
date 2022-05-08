@@ -6,11 +6,16 @@ ActiveAdmin.register Book do
 
     f.inputs "Book" do
       f.input :title
-      f.input :author_id, as: :select, collection: Author.all.pluck(:first_name, :last_name, :id)
-      f.input :genre_id, as: :select, collection: Genre.all.pluck(:name, :id)
+      # f.input :author_id, as: :select, collection: Author.all.pluck(
+      #   :first_name, :last_name, :id
+      # ).map{|full_name| ["#{full_name[0]} #{full_name[1]}", full_name[2]]},
+      #   include_blank: false, include_hidden: false
+
+      # f.input :genre_id, as: :select, collection: Genre.all.pluck(:name, :id),
+      #   include_blank: false, include_hidden: false
+
+      f.input :avatar, :as => :file
     end
     f.actions
   end
 end
-
-[[0,1,2,],[3,4,5],[6,7,8]].map{ |e| ["#{e[0]} #{e[1]}", e[2]]}

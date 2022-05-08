@@ -6,23 +6,15 @@
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  author_id  :bigint
-#  genre_id   :bigint
-#
-# Indexes
-#
-#  index_books_on_author_id  (author_id)
-#  index_books_on_genre_id   (genre_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (author_id => authors.id)
-#  fk_rails_...  (genre_id => genres.id)
 #
 class Book < ApplicationRecord
-  validates :title, :author_id, :genre_id, presence: true
+  has_one_attached :avatar
+  
+  validates :title, presence: true
 
   has_many :authors_books
   has_many :authors, through: :authors_books
-  belongs_to :genre
+
+  has_one :genres_book
+  has_one :genre, through: :genres_book
 end
