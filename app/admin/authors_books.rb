@@ -5,6 +5,7 @@ ActiveAdmin.register AuthorsBook do
     :first_name, :last_name, :id
   ).map{|full_name| ["#{full_name[0]} #{full_name[1]}", full_name[2]]}
   
+  book_names = Book.all.pluck(:title, :id)
   #a = AuthorsBook.all
   
   # a.each do |author_book|
@@ -27,7 +28,8 @@ ActiveAdmin.register AuthorsBook do
     f.inputs "Author`s books" do
       f.input :author_id, as: :select, collection: author_names,
               include_blank: false, include_hidden: false
-      f.input :book_id, as: :select, collection: Book.all.pluck(:title, :id)
+      f.input :book_id, as: :select, collection: book_names,
+              include_blank: false, include_blank: false, include_hidden: false
     end
     f.actions
   end
